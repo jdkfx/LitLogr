@@ -185,4 +185,12 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application ID used for Rakuten Web Service
+    |--------------------------------------------------------------------------
+    */
+
+    'rakuten_id' => env('RAKUTEN_APPLICATION_ID', false),
+
 ];
