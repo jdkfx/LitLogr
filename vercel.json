@@ -43,5 +43,7 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "VIEW_COMPILED_PATH": "/tmp"
-    }
+    },
+    "installCommand": "npm install",
+    "devCommand": "npm run dev"
 }
