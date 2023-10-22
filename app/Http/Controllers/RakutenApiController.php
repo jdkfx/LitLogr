@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 
 class RakutenApiController extends Controller
 {
-    public function getBookData()
+    public static function getBookData($title, $keyword, $booksGenreId)
     {
         $url = 'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404';
 
@@ -16,12 +16,18 @@ class RakutenApiController extends Controller
         $option = [
             'query' => [
                 'format'        => 'json',
-                'title'         => 'Laravel',
-                'keyword'       => 'PHP',
-                'booksGenreId'  => '001005005',
+                'keyword'       => $keyword,
                 'applicationId' => config('app.rakuten_id')
             ]
         ];
+
+        if (!empty($title)) {
+            $option['query']['title'] = $title;
+        }
+
+        if (!empty($booksGenreId)) {
+            $option['query']['booksGenreId'] = $booksGenreId; // example: 001005005
+        }
 
         $config = ['base_uri' => 'http://localhost/public/api/'];
         $client = new Client($config);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RakutenApiController;
+use App\Http\Requests\BookSearchRequest;
 
 class BookController extends Controller
 {
@@ -61,5 +63,23 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    public function showSearchBookPages()
+    {
+        return view('book.search');
+    }
+
+    public function searchBookList(BookSearchRequest $req)
+    {
+        $title          = $req->input('title');
+        $keyword        = $req->input('keyword');
+        $booksGenreId   = $req->input('booksGenreId');
+
+        $bookLists = RakutenApiController::getBookData($title, $keyword, $booksGenreId);
+
+        return view('book.search')->with([
+            "bookLists" => $bookLists,
+        ]);
     }
 }
