@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RakutenApiController;
+use App\Http\Controllers\BookController;
+// use App\Http\Controllers\RakutenApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/search', [RakutenApiController::class, 'getBookData']);
+Route::get('/search', [BookController::class, 'showSearchBookPages']);
+Route::post('/search', [BookController::class, 'searchBookList']);
 Route::get('/svelte', function () {
     return view('svelte');
 });
