@@ -29,7 +29,7 @@ class BookSearchRequest extends FormRequest
     public function messages()
     {
         return [
-            'keyword.required' => 'A title is required'
+            'keyword.required' => 'キーワードを入力してください。'
         ];
     }
 }
