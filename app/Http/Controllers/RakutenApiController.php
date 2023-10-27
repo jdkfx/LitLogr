@@ -34,6 +34,12 @@ class RakutenApiController extends Controller
 
         $response = $client->request('GET', $url, $option);
 
-        return $response->getBody();
+        $bookLists = json_decode($response->getBody(), true);
+        // echo '<pre>';
+        // var_dump($bookLists["Items"][7]["Item"]);
+        // echo '</pre>';
+        // exit;
+
+        return $bookLists["Items"];
     }
 }
