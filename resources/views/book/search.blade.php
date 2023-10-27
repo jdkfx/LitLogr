@@ -9,7 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <x-form method="POST" action="">
+                    <h1 class="text-2xl">検索する</h1>
+                    <x-form method="POST" action="" class="py-5">
                         @csrf
                         <x-input
                             type="text"
@@ -33,13 +34,54 @@
                             class="input input-bordered border-gray-200"
                             placeholder="ジャンルを選択してください" />
                         <x-slot:actions>
-                            <x-button label="検索" class="btn btn-info" type="submit" />
+                            <x-button label="検索" class="btn btn-info" type="submit" style="color: white" />
                         </x-slot:actions>
                     </x-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-0.5">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <h1 class="text-2xl">検索結果一覧</h1>
                     <div>
-                        @isset($bookLists)
-                            {{!! $bookLists !!}}
-                        @endisset
+                        <div class="overflow-x-auto">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>画像</th>
+                                        <th>タイトル</th>
+                                        <th>著者</th>
+                                        <th>出版社</th>
+                                    </tr>
+                                </thead>
+                                @isset($bookLists)
+                                    @foreach ($bookLists as $book)
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <img src='{{ $book["Item"]["mediumImageUrl"] }}' alt="" />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="font-bold">{{ $book["Item"]["title"] }}</p>
+                                                </td>
+                                                <td>
+                                                    <p>{{ $book["Item"]["author"] }}</p>
+                                                </td>
+                                                <td>
+                                                    <p>{{ $book["Item"]["publisherName"] }}</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>  
+                                    @endforeach
+                                @endisset
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
