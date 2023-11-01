@@ -56,6 +56,8 @@
                                         <th>タイトル</th>
                                         <th>著者</th>
                                         <th>出版社</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 @isset($bookLists)
@@ -75,6 +77,12 @@
                                                 </td>
                                                 <td>
                                                     <p>{{ $book["Item"]["publisherName"] }}</p>
+                                                </td>
+                                                <td>
+                                                    <input type="submit" value="読みたい" class="btn btn-neutral" style="color: white" />
+                                                </td>
+                                                <td>
+                                                    <input type="submit" value="読了" class="btn btn-info" style="color: white" />
                                                 </td>
                                             </tr>
                                         </tbody>  
