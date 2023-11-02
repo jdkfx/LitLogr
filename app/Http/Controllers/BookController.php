@@ -79,7 +79,10 @@ class BookController extends Controller
         $bookLists = RakutenApiController::getBookData($title, $keyword, $booksGenreId);
 
         return view('book.search')->with([
-            "bookLists" => $bookLists,
+            "bookLists"     => $bookLists,
+            "keyword"       => $keyword,
+            "title"         => $title,
+            "booksGenreId"  => $booksGenreId,
         ]);
     }
 }

@@ -18,21 +18,24 @@
                             wire:model="keyword"
                             name="keyword"
                             class="input input-bordered border-gray-200"
-                            placeholder="田辺 聖子" />
+                            placeholder="田辺 聖子"
+                            value="{{ old('keyword', $keyword ?? '') }}" />
                         <x-input
                             type="text"
                             label="タイトル"
                             wire:model="title"
                             name="title"
                             class="input input-bordered border-gray-200"
-                            placeholder="ジョゼと虎と魚たち" />
+                            placeholder="ジョゼと虎と魚たち"
+                            value="{{ old('title', $title ?? '') }}" />
                         <x-input
                             type="text"
                             label="ジャンル"
                             wire:model="booksGenreId"
                             name="booksGenreId"
                             class="input input-bordered border-gray-200"
-                            placeholder="ジャンルを選択してください" />
+                            placeholder="ジャンルを選択してください"
+                            value="{{ old('booksGenreId', $booksGenreId ?? '') }}" />
                         <x-slot:actions>
                             <x-button label="検索" class="btn btn-info" type="submit" style="color: white" />
                         </x-slot:actions>

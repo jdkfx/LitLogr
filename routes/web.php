@@ -28,12 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // 検索ページ
+    Route::get('/search', [BookController::class, 'showSearchBookPages'])->name('search');
+    Route::post('/search', [BookController::class, 'searchBookList']);
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/search', [BookController::class, 'showSearchBookPages']);
-Route::post('/search', [BookController::class, 'searchBookList']);
 Route::get('/svelte', function () {
     return view('svelte');
 });
